@@ -32,12 +32,18 @@ function bigResolution(){
   brandsMain.appendChild(brandsList);
   brandsMain.appendChild(readMore);
 }
-let phoneResolution = window.matchMedia('(max-width: 768px)').matches;
-if(phoneResolution){
+let mediaQueryList = window.matchMedia('(max-width: 768px)');
+if (mediaQueryList.matches) {
   smallResolution();
 }
 else {
   bigResolution();
 }
-
-
+mediaQueryList.addEventListener('change', function(evt){
+  if (evt.matches) {
+    smallResolution()
+  }
+  else {
+    bigResolution()
+  }
+});
